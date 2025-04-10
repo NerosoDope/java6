@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/headerCss.css">
+    <title>Cửa hàng</title>
+
+</head>
+
+<body>
+<!-- Chèn header fragment -->
+<div th:replace="~{/fragments/header :: header}"></div>
+<section class="category">
+
+    <div class="container">
+        <div class="row">
+            <div class="category-left">
+                <ul>
+                    <li class="category-left-li" th:each="category : ${categories}">
+                        <a th:href="@{'/shop?catelo=' + ${category.name}}"
+                           th:text="${category.name.toUpperCase()}"></a>
+                    </li>
+                </ul>
+            </div>
+
+            <style type="text/css">
+                .activePagi{
+                    background-color: rgba(64, 64, 64, 0.5);
+                }
+
+            </style>
+            <div class="category-right-content row">
+                <div class="container-pagination">
+                    <ul class="pagination">
+                        <li th:if="${page > 0}">
+                            <a th:href="@{|/shop?page=${page - 1}|}">Prev</a>
+                        </li>
+
+                        <li th:each="pageNum : ${#numbers.sequence(1, pageNumbers+2)}"
+                            th:classappend="${pageNum == page + 1} ? 'activePagi'">
+                            <a th:href="@{|/shop?page=${pageNum - 1}|}" th:text="${pageNum}"></a>
+                        </li>
+
+                        <li th:if="${page < pageNumbers - 1}">
+                            <a th:href="@{|/shop?page=${page + 1}|}">Next</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div th:each="product : ${products}" class="category-right-content-item">
+                    <a th:href="@{'/product?id=' + ${product.productId} }">
+                        <img th:src="@{'/img/' + ${product.imageUrl}}" alt="Product Image"/>
+                    </a>
+                    <h1>
+                        <a th:href="@{'/product-detail?id=' + ${product.productId} }"
+                           th:text="${product.name}"></a>
+                    </h1>
+                    <p th:text="${product.price} + 'VND'"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+<!-- Chèn footer fragment -->
+<div th:replace="~{/fragments/footer :: footer}"></div>
+<script src="/assets/js/script.js"></script>
+</body>
+</html>

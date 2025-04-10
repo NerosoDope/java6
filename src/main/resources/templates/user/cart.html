@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/headerCss.css">
+    <title>Document</title>
+</head>
+
+<body>
+<div th:replace="~{/fragments/header :: header}"></div>
+<section class="cart">
+    <div class="container">
+        <div class="cart-content row">
+            <div class="cart-content-left">
+                <table>
+                    <tr>
+                        <th>Sản phẩm</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Đơn giá</th>
+                        <th>Kho</th>
+                        <th>Xóa khỏi giỏ hàng</th>
+                        <th>Chọn</th>
+                    </tr>
+                    <tr th:each="c : ${cart}">
+                        <td><img th:src="@{'/img/' + ${c.img}}" alt=""></td>
+                        <td><p>[[${c.productName}]]</p></td>
+                        <td>
+                            <p>[[${c.price}]]<sup>VND</sup></p>
+                        </td>
+                        <td><p>[[${c.stockQuantity}]]</p></td>
+                        <td>
+                            <form th:action="@{|/deleteCartItem?cartId=${c.cartId}|}" style="width: 100%;"
+                                  method="post">
+                                <button style="margin:auto; background-color: red; padding: 10px;font-size: 13px; color: white; border-radius: 5px"
+                                        href="">Xóa khỏi giỏ hàng
+                                </button>
+                            </form>
+                        </td>
+
+                        <td><input type="checkbox" th:data-name="${c.productName}" th:data-price="${c.price}"
+                                   th:data-stock="${c.stockQuantity}" th:data-id="${c.productId}"></td>
+                    </tr>
+                </table>
+            </div>
+            <form id="checkoutForm" action="/order" method="post">
+                <h3 style="color:red; text-align: center; margin-bottom: 20px;">[[${message}]]</h3>
+                <div class="cart-content-right">
+                    <table id="checkoutTable">
+                        <tr>
+                            <th>Sản phẩm</th>
+                            <th>Đơn giá</th>
+                            <th>Kho</th>
+                            <th>Số lượng</th>
+                        </tr>
+                    </table>
+                    <hr style="margin: 10px 0;">
+                    <table>
+                        <tr>
+                            <td>TỔNG GIÁ</td>
+                            <td>
+                                <p id="totalPrice"></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Địa chỉ:</td>
+                            <td>
+                                <input style="padding: 8px 20px;border: 1px solid #e3e3e3; width: 100%; outline: none;"
+                                       type="text" name="address" placeholder="Địa chỉ">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Phương thức thanh toán:</td>
+                            <td>
+                                <select style="padding: 8px 20px;border: 1px solid #e3e3e3; width: 100%; outline: none;"
+                                        type="text" name="paymentType" class="form-select mb-3">
+                                    <option th:value="OFFLINE">Thanh toán khi nhận hàng</option>
+                                    <option th:value="ONLINE">Thanh toán online</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="cart-content-right-button">
+                        <a href="/shop">TIẾP TỤC MUA SẮM</a>
+                        <button type="submit">GIAO HÀNG</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<div th:replace="~{/fragments/footer :: footer}"></div>
+</body>
+<script src="/assets/js/order.js"></script>
+</html>

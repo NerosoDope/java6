@@ -1,0 +1,68 @@
+<header style="display: block" id="header" class=" header-scrolled text-black bg-light">
+    <nav id="header-nav" class="navbar navbar-expand-lg px-3 mb-3">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <img src="/assets/images/logo.png" class="logo">
+            </a>
+<!--            <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas"-->
+<!--                    data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false"-->
+<!--                    aria-label="Toggle navigation">-->
+<!--                <svg class="navbar-icon">-->
+<!--                    <use xlink:href="#navbar-icon"></use>-->
+<!--                </svg>-->
+<!--            </button>-->
+            <div class="offcanvas offcanvas-end" style="margin-right: 50px" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
+                <div class="offcanvas-header px-4 pb-0">
+                    <a class="navbar-brand" href="/">
+                        <img src="/assets/images/logo.png" class="logo">
+                    </a>
+                    <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas"
+                            aria-label="Close"
+                            data-bs-target="#bdNavbar"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul id="navbar"
+                        class="navbar-nav text-uppercase justify-content-end align-items-center flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link me-4" href="/">Trang chủ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/cart" class="nav-link me-4">Giỏ hàng</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/shop" class="nav-link me-4">Cửa hàng</a>
+                        </li>
+                        <li class="nav-item">
+                            <div class="user-items ps-5">
+                                <ul class="d-flex justify-content-end list-unstyled">
+                                    <li class="search-item "  th:if="${session.userName == null}" style="padding-left: 10px; display: flex; align-items: center">
+                                        <a href="/dangNhap">
+                                            Đăng nhập
+                                        </a>
+                                    </li>
+                                    <li class="search-item " id="dropdown-menu-user" th:if="${session.userName != null}" style="padding-left: 10px; display: flex; align-items: center">
+                                        <a href="/">
+                                            [[${session.fullname}]]
+                                        </a>
+                                        <ul class="dropdown-menu-user">
+                                            <li style="padding: 5px;">
+                                                <a href="/thongTinKhachHang" class="dropdown-item-user">Thông tin tài khoản</a>
+                                            </li>
+                                            <li style="padding: 5px;">
+                                                <a href="/orderHistory" class="dropdown-item-user">Lịch sử đơn hàng</a>
+                                            </li>
+                                            <li style="padding: 5px;">
+                                                <a href="/logOut" class="dropdown-item-user">Đăng xuất</a>
+                                            </li>
+
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>

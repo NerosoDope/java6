@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/headerCss.css">
+
+    <title>Document</title>
+</head>
+
+<body>
+<div th:replace="~{/fragments/header :: header}"></div>
+<section class="signup">
+    <div class="container">
+        <div class="signup-content row">
+            <div class="signup-content">
+                <p style="padding-bottom: 12px; font-weight: bold;">ĐĂNG KÝ</p>
+                <h3 style="color:red; text-align: center;">[[${message}]]</h3>
+                <form action="/sendOTP" method="post"
+                      th:object="${registerRequest}">
+                    <!-- <div class="delivery-content-left-input-top"> -->
+                    <div class="signup-content-input-top">
+						<div class="signup-content-input-top-item">
+							<label for="">Tên đăng nhập<span style="color: red;">*</span></label>
+							<input type="text" th:field="*{username}" placeholder="Tên đăng nhập" required>
+						</div>
+                        <!-- <div class="delivery-content-left-input-top-item"> -->
+                        <div class="signup-content-input-top-item">
+                            <label for="">Họ tên<span style="color: red;">*</span></label>
+                            <input type="text" th:field="*{full_name}" placeholder="Họ và tên" required>
+                        </div>
+                        <div class="signup-content-input-top-item">
+                            <label for="">Điện thoại<span style="color: red;">*</span></label>
+                            <input type="text"  th:field="*{phone}" placeholder="Số điện thoại" required>
+                        </div>
+                        <div class="signup-content-input-top-item">
+                            <label for="">Mật khẩu<span style="color: red;">*</span></label>
+                            <input type="password" th:field="*{password}" placeholder="Mật khẩu" required>
+                        </div>
+                        <div class="signup-content-input-top-item">
+                            <label for="">Nhập lại mật khẩu<span style="color: red;">*</span></label>
+                            <input type="password" th:field="*{password2}" placeholder="Nhập lại mật khẩu" required>
+                        </div>
+                        <div class="signup-content-input-top-item">
+                            <label for="">Email<span style="color: red;">*</span></label>
+                            <div style="    display: flex;gap: 4px;">
+                                <input type="email" th:field="*{email}" placeholder="Email" required>
+                                <button type="submit" style=" display: block; font-size: 12px;width: 80px;background: #000;color: #fff;cursor: pointer;">Gửi OTP</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="signup-content-left-button row">
+                        <a th:href="@{/dangNhap}"><span><i class="fas fa-sign-in-alt"></i></span>
+                            <p><Strong>Đăng nhập</Strong> (Nếu bạn đã có tài khoản)</p>
+                        </a>
+<!--                        <button type="submit:false">-->
+<!--                            <p style="font-weight: bold;">Đăng ký</p>-->
+<!--                        </button>-->
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<div th:replace="~{/fragments/footer :: footer}"></div>
+</body>
+<script src="/assets/js/script.js"></script>
+</html>

@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<!-- saved from url=(0031)https://demo-basic.adminkit.io/ -->
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
+    <meta name="author" content="AdminKit">
+    <meta name="keywords"
+          content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com/">
+
+    <link rel="canonical" href="https://demo-basic.adminkit.io/">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+
+    <title>Doanh thu</title>
+
+    <link href="/cssJs/app.css" rel="stylesheet">
+    <link href="/cssJs/css2" rel="stylesheet">
+    <meta name="maxai-mui-classname-prefix" content="injectDocumentStart-2024-12-24T03:13:31.541Z">
+    <script src="chrome-extension://mhnlakgilnojmhinhkckjpncpbhabphi/apps/content-scripts/website/maxai.js"></script>
+    <link rel="stylesheet" href="/cssJs/adminStyle.css">
+    <link id="USE_CHAT_GPT_AI_CONTENT_CSS_LINK_TAG" rel="stylesheet"
+          href="chrome-extension://mhnlakgilnojmhinhkckjpncpbhabphi/content.css">
+    <link rel="stylesheet" href="/cssJs/css2(1)">
+</head>
+
+<body cz-shortcut-listen="true">
+<div class="wrapper">
+    <nav id="sidebar" class="sidebar js-sidebar">
+        <div class="sidebar-content js-simplebar" data-simplebar="init">
+            <div class="simplebar-wrapper" style="margin: 0px;">
+                <div class="simplebar-height-auto-observer-wrapper">
+                    <div class="simplebar-height-auto-observer"></div>
+                </div>
+                <div class="simplebar-mask">
+                    <div class="simplebar-offset" style="right: 0px; bottom: 0px;">
+                        <div class="simplebar-content-wrapper" tabindex="0" role="region"
+                             aria-label="scrollable content" style="height: 100%; overflow: hidden scroll;">
+                            <div class="simplebar-content" style="padding: 0px;">
+
+                                <a class="nav-link sidebar-brand dropdown-toggle d-none d-sm-inline-block"
+                                   href="/admin/"
+                                   data-bs-toggle="dropdown">
+                                    <img src="/img/avatar-2.jpg" class="avatar img-fluid rounded me-1"
+                                         alt="Charles Hall"> <span class="text-white">[[${session.fullname}]]</span>
+                                </a>
+
+
+                                <ul class="sidebar-nav">
+                                    <li class="sidebar-header">
+                                        Quản lý
+                                    </li>
+
+                                    <li class="sidebar-item ">
+                                        <a class="sidebar-link" href="/admin/">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                 class="feather feather-home align-middle me-2">
+                                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                            </svg>
+                                            <span class="align-middle">Trang chủ</span>
+                                        </a>
+                                    </li>
+
+                                    <li class="sidebar-item">
+                                        <a class="sidebar-link" href="/admin/customers">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                 class="feather feather-user align-middle me-2">
+                                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                                <circle cx="12" cy="7" r="4"></circle>
+                                            </svg>
+                                            <span class="align-middle">Quản lý khách hàng</span>
+                                        </a>
+                                    </li>
+
+                                    <li class="sidebar-item">
+                                        <a class="sidebar-link" href="/admin/employees">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                 class="feather feather-briefcase align-middle me-2">
+                                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                                            </svg>
+                                            <span class="align-middle">Quản lý nhân viên</span>
+                                        </a>
+                                    </li>
+
+                                    <li class="sidebar-item">
+                                        <a class="sidebar-link" href="/admin/products">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                 class="feather feather-smartphone align-middle me-2">
+                                                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                                                <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                                            </svg>
+                                            <span class="align-middle">Quản lý sản phẩm</span>
+                                        </a>
+                                    </li>
+                                    <li class="sidebar-item">
+                                        <a class="sidebar-link" href="/admin/categories">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                 class="feather feather-list align-middle me-2">
+                                                <line x1="8" y1="6" x2="21" y2="6"></line>
+                                                <line x1="8" y1="12" x2="21" y2="12"></line>
+                                                <line x1="8" y1="18" x2="21" y2="18"></line>
+                                                <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                                                <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                                                <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                                            </svg>
+                                            <span class="align-middle">Quản lý danh mục</span>
+                                        </a>
+                                    </li>
+
+                                    <li class="sidebar-item">
+                                        <a class="sidebar-link" href="/admin/orders">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                 class="feather feather-shopping-cart align-middle me-2">
+                                                <circle cx="9" cy="21" r="1"></circle>
+                                                <circle cx="20" cy="21" r="1"></circle>
+                                                <path
+                                                        d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6">
+                                                </path>
+                                            </svg>
+                                            <span class="align-middle">Quản lý đơn hàng</span>
+                                        </a>
+                                    </li>
+
+                                    <li class="sidebar-item ">
+                                        <a class="sidebar-link" href="/admin/payment">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                 stroke-linecap="round" stroke-linejoin="round"
+                                                 class="feather feather-shopping-bag align-middle me-2">
+                                                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                                <line x1="3" y1="6" x2="21" y2="6"></line>
+                                                <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                            </svg>
+                                            <span class="align-middle">Quản lý thanh toán</span>
+                                        </a>
+                                    </li>
+
+
+                                    <li class="sidebar-header">
+                                        Thống kê
+                                    </li>
+
+                                    <li class="sidebar-item active">
+                                        <a class="sidebar-link" href="/admin/doanhThu">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                 class="feather feather-dollar-sign align-middle me-2">
+                                                <line x1="12" y1="1" x2="12" y2="23"></line>
+                                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                                            </svg>
+                                            <span class="align-middle">Thống kê doanh thu</span>
+                                        </a>
+                                    </li>
+
+                                    <li class="sidebar-item">
+                                        <a class="sidebar-link" href="/admin/spDaBan">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                 class="feather feather-bar-chart align-middle me-2">
+                                                <line x1="12" y1="20" x2="12" y2="10"></line>
+                                                <line x1="18" y1="20" x2="18" y2="4"></line>
+                                                <line x1="6" y1="20" x2="6" y2="16"></line>
+                                            </svg>
+                                            <span class="align-middle">Sản phẩm đã bán</span>
+                                        </a>
+                                    </li>
+
+                                    <li class="sidebar-header">
+                                        Tài khoản
+                                    </li>
+
+                                    <li class="sidebar-item">
+                                        <a class="sidebar-link" href="/logOut">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                 class="feather feather-log-out align-middle me-2">
+                                                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                                                <polyline points="16 17 21 12 16 7"></polyline>
+                                                <line x1="21" y1="12" x2="9" y2="12"></line>
+                                            </svg>
+                                            <span class="align-middle">Đăng xuất</span>
+                                        </a>
+                                    </li>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="simplebar-placeholder" style="width: auto; height: 947px;"></div>
+            </div>
+            <div class="simplebar-track simplebar-horizontal" style="visibility: hidden;">
+                <div class="simplebar-scrollbar" style="width: 0px; display: none;"></div>
+            </div>
+            <div class="simplebar-track simplebar-vertical" style="visibility: visible;">
+                <div class="simplebar-scrollbar"
+                     style="height: 523px; transform: translate3d(0px, 0px, 0px); display: block;"></div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main">
+
+
+        <main class="content">
+            <div class="container-fluid p-0">
+
+                <h1 class="h3 mb-3"><strong>Doanh thu</strong></h1>
+
+                <div class="container-main-index" style="display: block;">
+                    <div class="row" style="width: 100%;">
+                        <div class=" d-flex">
+                            <div class="w-100">
+                                <div class="row" style="display: flex; gap: 26px;">
+                                    <div class="" style="display: flex; gap: 26px; width: 47%;">
+                                        <div class="card col-sm-6">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col mt-0">
+                                                        <h5 class="card-title">Sản phẩm bán được</h5>
+                                                    </div>
+
+                                                    <div class="col-auto">
+                                                        <div class="stat text-primary">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                 height="24" viewBox="0 0 24 24" fill="none"
+                                                                 stroke="currentColor" stroke-width="2"
+                                                                 stroke-linecap="round" stroke-linejoin="round"
+                                                                 class="feather feather-truck align-middle">
+                                                                <rect x="1" y="3" width="15" height="13"></rect>
+                                                                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8">
+                                                                </polygon>
+                                                                <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                                                                <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <h1 class="mt-1 mb-3">[[${spBanDuoc}]]</h1>
+
+                                            </div>
+                                        </div>
+                                        <div class="card col-sm-6">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col mt-0">
+                                                        <h5 class="card-title">Khách mua hàng</h5>
+                                                    </div>
+
+                                                    <div class="col-auto">
+                                                        <div class="stat text-primary">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                 height="24" viewBox="0 0 24 24" fill="none"
+                                                                 stroke="currentColor" stroke-width="2"
+                                                                 stroke-linecap="round" stroke-linejoin="round"
+                                                                 class="feather feather-users align-middle">
+                                                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2">
+                                                                </path>
+                                                                <circle cx="9" cy="7" r="4"></circle>
+                                                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <h1 class="mt-1 mb-3">[[${soKhachHang}]]</h1>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6" style="display: flex; gap: 26px; width: 46%;">
+                                        <div class="card col-sm-6">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col mt-0">
+                                                        <h5 class="card-title">Doanh thu</h5>
+                                                    </div>
+
+                                                    <div class="col-auto">
+                                                        <div class="stat text-primary">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                 height="24" viewBox="0 0 24 24" fill="none"
+                                                                 stroke="currentColor" stroke-width="2"
+                                                                 stroke-linecap="round" stroke-linejoin="round"
+                                                                 class="feather feather-dollar-sign align-middle">
+                                                                <line x1="12" y1="1" x2="12" y2="23"></line>
+                                                                <path
+                                                                        d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6">
+                                                                </path>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <h1 class="mt-1 mb-3">[[${tongDoanhThu}]] VND</h1>
+
+                                            </div>
+                                        </div>
+                                        <div class="card col-sm-6">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col mt-0">
+                                                        <h5 class="card-title">Đơn hàng</h5>
+                                                    </div>
+
+                                                    <div class="col-auto">
+                                                        <div class="stat text-primary">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                 height="24" viewBox="0 0 24 24" fill="none"
+                                                                 stroke="currentColor" stroke-width="2"
+                                                                 stroke-linecap="round" stroke-linejoin="round"
+                                                                 class="feather feather-shopping-cart align-middle">
+                                                                <circle cx="9" cy="21" r="1"></circle>
+                                                                <circle cx="20" cy="21" r="1"></circle>
+                                                                <path
+                                                                        d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6">
+                                                                </path>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <h1 class="mt-1 mb-3">[[${soDonHang}]]</h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" style="width: 100%;">
+
+                        <div class="row">
+                            <div class="d-flex">
+                                <div class="card flex-fill">
+                                    <div class="card-header">
+
+                                        <h5 class="card-title mb-0">Doanh thu theo sản phẩm</h5>
+                                    </div>
+                                    <table id="example" class="table table-hover my-0">
+                                        <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th class="d-none d-xl-table-cell">Tên sản phẩm</th>
+                                            <th class="d-none d-xl-table-cell">Đơn giá</th>
+                                            <th class="d-none d-xl-table-cell">Số lượt bán</th>
+                                            <th class="d-none d-xl-table-cell">Doanh thu</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr th:each="dt : ${doanhThuList}">
+                                            <td>[[${dt.productId}]]</td>
+                                            <td class="d-none d-xl-table-cell">[[${dt.productName}]]</td>
+                                            <td class="d-none d-xl-table-cell">[[${dt.productPrice}]] VND</td>
+                                            <td class="d-none d-xl-table-cell">[[${dt.totalQuantity}]]</td>
+                                            <td class="d-none d-md-table-cell">[[${dt.totalPrice}]] VND</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                                    <script
+                                            src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+                                    <script>
+                                        $(document).ready(function () {
+                                            $('#example').DataTable();
+                                        });
+                                        $('#example').DataTable({
+                                            paging: true,
+                                            searching: true,
+                                            ordering: true,
+                                            lengthMenu: [5, 10, 25, 50],
+                                            pageLength: 5
+                                        });
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+        </main>
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <div class="row text-muted">
+                    <div class="col-6 text-start">
+                        <p class="mb-0">
+                            <a class="text-muted" href="/" target="_blank"><strong>Admin</strong></a> - <a
+                                class="text-muted" href="/" target="_blank"><strong>SO1</strong></a> ©
+                        </p>
+                    </div>
+                    <div class="col-6 text-end">
+                        <ul class="list-inline">
+                            <li class="list-inline-item">
+                                <a class="text-muted" href="/" target="_blank">Support</a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="text-muted" href="/" target="_blank">Help Center</a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="text-muted" href="/" target="_blank">Privacy</a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="text-muted" href="/" target="_blank">Terms</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>
+
+<script src="/cssJs/app.js"></script>
+
+
+</body>
+
+</html>

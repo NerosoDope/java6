@@ -1,0 +1,263 @@
+
+.map_Client {
+    display: flex;
+    justify-content: center;
+}
+
+.container_Client {
+    display: flex;
+    max-width: 1200px;
+    width: 100%;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 700px;
+    margin: 40px 0px;
+}
+
+.sidebar_Client {
+    width: 350px;
+    background: #4b4b4b;
+}
+
+.sidebar_Client p {
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.sidebar_Client ul li {
+    display: flex;
+    align-items: center;
+}
+
+.sidebar_Client ul {
+    list-style-type: none;
+}
+
+.sidebar_Client li {
+    margin: 10px 0;
+}
+
+.info_full {
+    margin-left: 20px;
+    color: #fff;
+}
+
+.sidebar_Client a {
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    padding: 15px 8px 15px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.sidebar_Client li:hover {
+    background: #7b7b7b;
+    color: #000;
+}
+
+.sidebar_Client ul li.active {
+    background: #fff;
+    color: #000;
+    font-weight: bold;
+}
+
+.content_Client {
+
+    flex: 1;
+    padding: 20px;
+    overflow-y: scroll;
+    flex: 1;
+    padding: 20px;
+}
+
+.content_Client h2 {
+    margin-bottom: 20px;
+    color: #ff701a;
+}
+
+.info-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+
+}
+
+.info-group label {
+    width: 150px;
+    color: #ff701a;
+}
+
+.info-group input,
+.info-group div,
+.info-group select {
+    flex: 2;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+    flex: 1;
+}
+
+.info-group input:disabled,
+.info-group select:disabled {
+    background: #f4f4f4;
+    cursor: not-allowed;
+}
+
+.button-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.button-container button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.edit-btn,
+.reset-password {
+    background-color: #ff701a;
+}
+
+.save-btn {
+    background-color: #28a745;
+}
+
+.hoSoKhachHang,
+.kHDoiMatKhau,
+.trangThaiTour {
+    display: none;
+}
+
+.active {
+    display: block;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    width: 350px;
+}
+
+.profile-header img {
+    height: 100px;
+    border-radius: 50%;
+    margin: 20px 0px 20px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+}
+
+.profile-header img:hover {
+    filter: brightness(90%);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.profile-header img.editable {
+    border: 2px dashed #007bff;
+    padding: 2px;
+}
+
+.profile-header div {
+    font-size: 1.2em;
+}
+
+.fullUser {
+    max-width: 250px;
+    padding-left: 20px;
+
+    strong, small {
+        color: #fff;
+    }
+}
+
+.fullUser span {
+    display: inline-block;
+    max-width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+@media (max-width: 767px) {
+    .container_Client {
+        width: 95%;
+        flex-direction: column;
+        height: auto !important;
+
+        .sidebar_Client {
+            width: 100%;
+        }
+
+        .content_Client {
+            overflow-y: auto;
+
+            .info-group {
+                justify-content: center;
+                align-items: center !important;
+
+                input,
+                select {
+                    width: 100%;
+                    margin-right: 0;
+                    padding: 6px;
+                }
+            }
+        }
+    }
+
+    .info-group label {
+        width: 126px !important;
+    }
+
+    .booking-table {
+        table-layout: auto !important;
+        width: 100%;
+    }
+
+    .booking-table-container {
+        overflow-x: auto;
+    }
+
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .booking-table {
+        table-layout: auto !important;
+        width: 100%;
+    }
+
+    .booking-table-container {
+        overflow-x: auto;
+    }
+
+    .container_Client {
+        width: 95%;
+
+        .sidebar_Client {
+            width: 300px !important;
+
+            .profile-header {
+                width: 100%;
+
+                img {
+                    width: 80px;
+                    height: 80px;
+                    margin: 20px 0px 20px 20px;
+                }
+            }
+        }
+    }
+
+}

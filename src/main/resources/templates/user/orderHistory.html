@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/headerCss.css">
+    <title>Document</title>
+</head>
+
+<body>
+<div th:replace="~{/fragments/header :: header}"></div>
+<section class="cart">
+    <div class="container">
+        <div class="cart-content row">
+            <div class="cart-content-left">
+                <h3 style="color: red; text-align: center">[[${message}]]</h3>
+                <table id="example">
+                    <thead>
+                    <tr>
+                        <th>Mã đơn hàng</th>
+                        <th>Sản phẩm</th>
+                        <th>Đơn giá</th>
+                        <th>Số lượng</th>
+                        <th>Tổng giá</th>
+                        <th>Trạng thái</th>
+                        <th>Chọn</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="order : ${orderList}">
+                        <td>[[${order.orderId}]]</td>
+                        <td>
+                            <p th:each="item : ${order.orderItems}"
+                               style="padding: 5px 0px; font-variant-caps: unicase">[[${item.product.name}]]</p>
+                        </td>
+                        <td>
+                            <p th:each="item : ${order.orderItems}" style="padding: 5px 0px;"
+                               th:text="${#numbers.formatDecimal(item.product.price, 0, 'POINT', 0, 'NONE')} + ' VND'"></p>
+                        </td>
+                        <td>
+                            <p th:each="item : ${order.orderItems}" style="padding: 5px 0px;">[[${item.quantity}]]</p>
+                        </td>
+                        <td><p>[[${order.totalPrice}]] VND</p></td>
+                        <td>
+                            <p th:if="${order.payment.status == 'CHUA_THANH_TOAN' && order.payment.type == 'ONLINE'}"
+                               style="color:#fff;background-color: rgb(255 187 43) !important;">Chờ thanh toán</p>
+                            <p th:if="${order.status == 'DANG_GIAO' && order.payment.type == 'OFFLINE' || order.status == 'DANG_GIAO' && order.payment.type == 'ONLINE' && order.payment.status =='DA_THANH_TOAN'}"
+                               style="color:#fff;background-color: rgb(255 187 43) !important;">Đang giao</p>
+                            <p th:if="${order.status} == 'DA_NHAN'"
+                               style="color:#fff;background-color: rgb(30 190 143) !important;">Đã nhận hàng</p>
+                            <p th:if="${order.status} == 'TRA_HANG'"
+                               style="color:#fff;background-color: rgb(219 52 68) !important;">Trả hàng</p>
+                        </td>
+                        <td th:if="${order.status == 'DA_NHAN'}" style="">
+                        </td>
+                        <td th:if="${order.status == 'DANG_GIAO' && order.payment.type == 'OFFLINE' ||
+                         order.status == 'DANG_GIAO' && order.payment.type == 'ONLINE' && order.payment.status =='DA_THANH_TOAN'}" style="background-color: rgb(30 190 143)">
+                            <button  style="border: none;background: #ffffff00; color: #fff;" class="update-button"
+                                    th:data-order-id="${order.orderId}"
+                                    data-status="DA_NHAN">Đã nhận
+                            </button>
+                        </td>
+                        <td th:if="${order.payment.status == 'CHUA_THANH_TOAN' && order.payment.type == 'ONLINE'}" style="background: rgb(255 187 43);">
+                            <a th:href="@{'/payment?orderID=' +${order.orderId}}" style="border: none;background: rgb(255 187 43); color: #fff; cursor: pointer;">Thanh toán
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+
+
+                </table>
+
+                <script>
+                    document.querySelectorAll('.update-button').forEach(button => {
+                        button.addEventListener('click', function () {
+                            const orderId = this.getAttribute('data-order-id');
+                            const status = this.getAttribute('data-status');
+                            console.log("Order ID:", orderId);
+                            console.log("Status:", status);
+
+                            updateOrderStatus(orderId, status);
+                        });
+                    });
+
+                    function updateOrderStatus(orderId, status) {
+                        var form = document.createElement('form');
+                        form.method = 'POST';
+                        form.action = '/updateOrderUser';
+
+                        var inputOrderId = document.createElement('input');
+                        inputOrderId.type = 'hidden';
+                        inputOrderId.name = 'orderId';
+                        inputOrderId.value = orderId;
+                        form.appendChild(inputOrderId);
+
+                        var inputStatus = document.createElement('input');
+                        inputStatus.type = 'hidden';
+                        inputStatus.name = 'status';
+                        inputStatus.value = status;
+                        form.appendChild(inputStatus);
+
+                        document.body.appendChild(form);
+                        form.submit();
+                    }
+
+                </script>
+                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+                <script>
+                    $(document).ready(function () {
+                        $('#example').DataTable();
+                    });
+                    $('#example').DataTable({
+                        paging: true,
+                        searching: true,
+                        ordering: true,
+                        lengthMenu: [5, 10, 25, 50],
+                        pageLength: 5
+                    });
+                </script>
+            </div>
+            <i style="display: block;margin: 20px;width: 100%;text-align: center;">Nếu muốn hủy đơn, Vui lòng liên hệ đến số điện thoại <strong> 024 7300 1955</strong> để được
+                nhân
+                viên hỗ trợ và xác nhận hủy đơn.</i>
+        </div>
+    </div>
+</section>
+
+<div th:replace="~{/fragments/footer :: footer}"></div>
+</body>
+<script src="/assets/js/script.js"></script>
+</html>

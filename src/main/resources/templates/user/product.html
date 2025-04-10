@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+	<link rel="stylesheet" href="/assets/css/style.css">
+	<link rel="stylesheet" href="/assets/css/headerCss.css">
+
+	<title>Product Detail</title>
+</head>
+
+<body>
+	<div th:replace="~{/fragments/header :: header}"></div>
+	<section class="product">
+		<div class="container">
+			<div class="product-top row">
+				<p>Trang chủ </p><span>/</span>
+				<p>Cửa hàng </p><span>/</span>
+				<p th:text="${product.name}"></p>
+			</div>
+			<div class="product-content row">
+				<div class="product-content-left row">
+					<div class="product-content-left-big-img">
+						<img th:src="@{'/img/' + ${product.imageUrl}}" alt="Product Image" />
+					</div>
+
+				</div>
+				<div class="product-content-right">
+					<div class="product-content-right-product-name">
+						<h1 th:text="${product.name}"></h1>
+						<p th:text="'Mã sản phẩm: ' + ${product.productId}"></p> <!-- Product code -->
+					</div>
+					<div class="product-content-right-product-price">
+						<p th:text="${product.price+' VND'}"></p>
+					</div>
+					<div class="product-content-right-product-color">
+
+						<div class="product-content-right-product-button">
+							<form action="/">
+								<div class="quantity">
+									<p style="font-weight: bold; padding-right: 6px;">Số lượng: </p>
+									<input type="number" min="0" value="1">
+								</div>
+<!--								<button type="submit" style="display: flex; justify-content: center;align-items: center;">-->
+<!--									<i class="fas fa-shopping-cart"></i>-->
+<!--									<p>MUA HÀNG</p>-->
+<!--								</button>-->
+							</form>
+							<form th:action="@{|/addCart?prdId=${product.productId}|}" method="post" th:object="${addCartRequest}">
+								<input type="hidden" id="prdId" th:field="${addCartRequest.Id}" th:value="${product.productId}">
+								<button type="submit">
+									<p>Thêm vào giỏ hàng</p>
+								</button>
+							</form>
+						</div>
+					</div>
+					<div class="product-content-right-bottom">
+						<div class="product-content-right-bottom-top">
+							&#8744;
+						</div>
+						<div class="product-content-right-bottom-content-big">
+							<div class="product-content-right-bottom-content-title row">
+								<div class="product-content-right-bottom-content-title-item chitiet">
+									<p>Giới thiệu sản phẩm</p>
+								</div>
+							</div>
+							<div class="product-content-right-bottom-content">
+								<div class="product-content-right-bottom-content-gtsp" style="white-space: pre-wrap;"
+									th:text="${product.description}">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<div th:replace="~{/fragments/footer :: footer}"></div>
+</body>
+<script src="/assets/js/script.js"></script>	
+</html>

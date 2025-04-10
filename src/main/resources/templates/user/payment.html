@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông tin chuyển khoản</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        .container {
+            background: white;
+            padding: 1.5rem;
+            height: 93vh;
+            max-height: 93vh;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #37398D;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            border-bottom: 2px solid #ddd;
+            margin-bottom: 1rem;
+        }
+
+        .tab {
+            flex: 1;
+            text-align: center;
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #333;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .tab:hover {
+            background-color: #f1f1f1;
+        }
+
+        .tab.active {
+            background-color: #37398D;
+            color: white;
+        }
+
+        .account-info {
+            display: none;
+            margin: 1rem 0;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #f9f9f9;
+        }
+
+        .account-info.active {
+            display: block;
+        }
+
+        .account-info h3 {
+            margin: 0;
+            font-size: 1.25rem;
+        }
+
+        .account-info p {
+            margin: 0.5rem 0;
+        }
+
+        .main {
+            display: flex;
+            max-width: 1000px;
+            margin: auto;
+            border-radius: 4px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .ctn-1 {
+            width: 64%;
+            border-right: 1px solid lightgray;
+        }
+
+        .ctn-2 {
+            width: 36%;
+        }
+
+        th {
+            width: 25%;
+            text-align: right;
+        }
+
+        td {
+            width: 25%;
+
+            p {
+                font-size: 11px;
+                text-align: right;
+            }
+        }
+
+
+    </style>
+
+</head>
+<body>
+<div class="main-container">
+    <div class="main">
+        <div class="container ctn-1">
+            <h2>Thông tin đơn hàng</h2>
+            <div class="account-info active">
+                <table id="example" style="width: 100%">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>Sản phẩm</th>
+                        <th>Số lượng</th>
+                        <th>Đơn giá</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="item : ${orderList.orderItems}">
+                        <td><img th:src="@{'/img/' + ${item.product.imageUrl}}" alt="Product Image" width="70"/></td>
+                        <td>
+                            <p style="padding: 5px 0px; font-variant-caps: unicase">[[${item.product.name}]]</p>
+                        </td>
+                        <td>
+                            <p style="padding: 5px 0px; ">[[${item.quantity}]]</p>
+                        </td>
+                        <td>
+                            <p style="padding: 5px 0px;"
+                               th:text="${#numbers.formatDecimal(item.product.price, 0, 'POINT', 0, 'NONE')} + ' VND'"></p>
+                        </td>
+
+                    </tr>
+                    </tbody>
+                </table>
+                <hr>
+                <div style="display: flex; justify-content: space-between">
+                    <p>Phương thức thanh toán:</p>
+                    <p style="font-size: 15px;">Thanh toán online</p>
+                </div>
+                <div style="display: flex; justify-content: space-between">
+                    <p>Địa chỉ:</p>
+                    <p style="font-size: 13px;">[[${orderList.address}]]</p>
+                </div>
+                <div style="display: flex; justify-content: space-between">
+                    <p>Tổng giá tiền:</p>
+                    <p>[[${orderList.totalPrice}]] VND</p>
+                </div>
+            </div>
+        </div>
+        <div class="container ctn-2">
+            <h2>Chọn phương thức thanh toán</h2>
+            <div class="tabs">
+                <div class="tab active" id="tabMomo">
+                    <img src="https://upload.wikimedia.org/wikipedia/vi/f/fe/MoMo_Logo.png" alt="MoMo Logo" width="65">
+                </div>
+                <div class="tab" id="tabVietcombank">
+                    <img src="https://logowik.com/content/uploads/images/vietcombank8188.jpg" alt="Vietcombank Logo"
+                         width="87">
+                </div>
+            </div>
+
+            <!-- MoMo Info -->
+            <div class="account-info active" id="momoInfo">
+                <h3>Thanh toán qua MoMo</h3>
+                <p><strong>Số điện thoại:</strong> 0558 569 256</p>
+                <p><strong>Chủ tài khoản:</strong> SO1 Shop</p>
+                <p><strong>Số tiền:</strong> [[${orderList.totalPrice}]] VND</p>
+                <p><strong>Nội dung:</strong> [[${orderList.payment.contentPayment}]]</p>
+            </div>
+
+            <!-- Vietcombank Info -->
+            <div class="account-info" id="vietcombankInfo">
+                <h3>Thanh toán qua Vietcombank</h3>
+                <p><strong>Số tài khoản:</strong> 103895225</p>
+                <p><strong>Chủ tài khoản:</strong> SO1 Shop</p>
+                <p><strong>Số tiền:</strong> [[${orderList.totalPrice}]] VND</p>
+                <p><strong>Nội dung:</strong> [[${orderList.payment.contentPayment}]]</p>
+            </div>
+            <div><i style="font-size: 13px">Lưu ý: Sau khi thanh toán , quý khách vui lòng đợi nhân viên xác nhận và giao hàng.</i></div>
+        </div>
+    </div>
+</div>
+
+<button style="position: fixed;top: 10px;left: 10px;padding: 10px 23px;background: #fff;" onclick="goBack()">Trở về</button>
+
+<script>
+    const tabMomo = document.getElementById('tabMomo');
+    const tabVietcombank = document.getElementById('tabVietcombank');
+    const momoInfo = document.getElementById('momoInfo');
+    const vietcombankInfo = document.getElementById('vietcombankInfo');
+
+    tabMomo.addEventListener('click', () => {
+        tabMomo.classList.add('active');
+        tabVietcombank.classList.remove('active');
+        momoInfo.classList.add('active');
+        vietcombankInfo.classList.remove('active');
+    });
+
+    tabVietcombank.addEventListener('click', () => {
+        tabVietcombank.classList.add('active');
+        tabMomo.classList.remove('active');
+        vietcombankInfo.classList.add('active');
+        momoInfo.classList.remove('active');
+    });
+
+    function goBack() {
+        window.history.back();
+    }
+</script>
+</body>
+</html>
